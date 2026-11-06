@@ -272,6 +272,24 @@ export default function App() {
         </div>
       )}
 
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/919494694195"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 group"
+        aria-label="Chat on WhatsApp"
+      >
+        {/* Pulse ring */}
+        <span className="absolute inset-0 rounded-full bg-green-400 opacity-30 animate-ping" />
+        {/* Button */}
+        <span className="relative flex w-14 h-14 rounded-full bg-[#25D366] items-center justify-center shadow-xl shadow-green-500/40 group-hover:scale-110 transition-transform duration-200">
+          <svg viewBox="0 0 32 32" className="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2C8.268 2 2 8.268 2 16c0 2.478.67 4.797 1.836 6.789L2 30l7.438-1.818A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.44 11.44 0 0 1-5.836-1.598l-.418-.248-4.414 1.079 1.107-4.285-.272-.44A11.46 11.46 0 0 1 4.5 16C4.5 9.596 9.596 4.5 16 4.5S27.5 9.596 27.5 16 22.404 27.5 16 27.5zm6.29-8.61c-.344-.172-2.037-1.004-2.352-1.119-.316-.115-.546-.172-.776.172-.23.344-.89 1.119-1.09 1.35-.2.23-.4.258-.744.086-.344-.172-1.452-.535-2.766-1.707-1.022-.912-1.712-2.038-1.912-2.382-.2-.344-.021-.53.15-.702.155-.154.344-.4.516-.6.172-.2.23-.344.344-.574.115-.23.058-.43-.029-.602-.086-.172-.776-1.87-1.063-2.562-.28-.672-.564-.58-.776-.59l-.66-.012c-.23 0-.602.086-.916.43-.315.344-1.204 1.176-1.204 2.868s1.233 3.327 1.405 3.557c.172.23 2.426 3.704 5.878 5.193.822.354 1.463.566 1.963.725.824.262 1.575.225 2.168.137.661-.099 2.037-.832 2.323-1.635.287-.803.287-1.49.2-1.635-.085-.143-.315-.23-.66-.4z"/>
+          </svg>
+        </span>
+      </a>
+
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-purple-100">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
