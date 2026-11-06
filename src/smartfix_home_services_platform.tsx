@@ -174,7 +174,6 @@ export default function App() {
   const [timeSlot, setTimeSlot]             = useState<string | null>(null);
   const [inclEquip, setInclEquip]           = useState(true);
   const [optionId, setOptionId]             = useState('');
-  const [colorIdx, setColorIdx]             = useState(0); // reserved for future use
   const [persons, setPersons]               = useState(1);
   const [addrType, setAddrType]             = useState('Home');
   const [addrText, setAddrText]             = useState('');
@@ -238,7 +237,7 @@ export default function App() {
   const startBooking = (svc: typeof CATALOG_SERVICES[0]) => {
     setService(svc);
     setOptionId(svc.options?.[0]?.id ?? '');
-    setColorIdx(0); setPersons(1);
+    setPersons(1);
     setSelDate(null); setTimeSlot(null); setTimePeriod('Morning');
     setAddrText(''); setAddrType('Home'); setPayment('upi');
     setAddrSuggestions([]);
