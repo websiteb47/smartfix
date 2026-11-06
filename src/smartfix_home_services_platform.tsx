@@ -248,15 +248,39 @@ export default function App() {
   const finalise = () => {
     if (!service || !selDate) return;
     const id = 'SF-' + Math.floor(10000 + Math.random() * 90000);
+    const dateStr = selDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    const pkgName = service.options?.find(o => o.id === optionId)?.name ?? 'Standard';
+
     setBookings(prev => [{
       id, serviceName: service.name, category: service.categoryName,
-      date: selDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
-      timeSlot, address: addrText,
-      package: service.options?.find(o => o.id === optionId)?.name ?? 'Standard',
-      persons, total: price, status: 'Confirmed', image: service.image,
+      date: dateStr, timeSlot, address: addrText,
+      package: pkgName, persons, total: price, status: 'Confirmed', image: service.image,
     }, ...prev]);
     setConfirmedId(id); setStep(5);
     window.scrollTo({ top: 0 });
+
+    // Send booking details to WhatsApp
+    const msg = [
+      `🔔 *New SmartFix Booking*`,
+      ``,
+      `📋 *Booking ID:* ${id}`,
+      `🛠️ *Service:* ${service.name}`,
+      `📂 *Category:* ${service.categoryName}`,
+      `📦 *Package:* ${pkgName} (${persons} technician${persons > 1 ? 's' : ''})`,
+      ``,
+      `📅 *Date:* ${dateStr}`,
+      `⏰ *Time:* ${timeSlot}`,
+      `📍 *Address:* ${addrText}`,
+      ``,
+      `💰 *Total Amount:* ₹${price}`,
+      ``,
+      `✅ Status: Confirmed`,
+    ].join('\n');
+
+    window.open(
+      `https://wa.me/919494694195?text=${encodeURIComponent(msg)}`,
+      '_blank'
+    );
   };
 
   const goBack = () => { if (step === 1) setView('category-services'); else setStep(s => s - 1); };
